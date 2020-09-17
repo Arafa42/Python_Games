@@ -48,10 +48,23 @@ def paddle1_down():
     y-=20
     paddle1.sety(y)
 
+def paddle2_up():
+    y = paddle2.ycor()
+    y+=20
+    paddle2.sety(y)
+
+def paddle2_down():
+    y =paddle2.ycor()
+    y-=20
+    paddle2.sety(y)
+
 #KEYBOARD
 window.listen()
-window.onkeypress(paddle1_up, "Up")
-window.onkeypress(paddle1_down, "Down")
+window.onkeypress(paddle1_up, "z")
+window.onkeypress(paddle1_down, "s")
+window.onkeypress(paddle2_up, "Up")
+window.onkeypress(paddle2_down, "Down")
+
 
 
 
