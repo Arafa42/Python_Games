@@ -33,8 +33,8 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(-0,0)
-ball.dx = 0.2
-ball.dy = 0.2
+ball.dx = 0.4
+ball.dy = -0.4
 
 #MOVEMENT
 def paddle1_up():
@@ -75,16 +75,26 @@ while True:
     #collision
     if(ball.ycor() > 290):
         ball.sety(290)
-        ball.dy *= -0.2
+        ball.dy *= -0.6
 
     if(ball.ycor() < -290):
         ball.sety(-290)
-        ball.dy *= -0.2
+        ball.dy *= -0.6
 
     if ball.xcor() > 390:
         ball.goto(0,0)
-        ball.dx *= -0.2
+        ball.dx *= -0.6
 
     if ball.xcor() < -390:
         ball.goto(0,0)
-        ball.dx *= 0.2
+        ball.dx *= -0.6
+
+#PADDLE & BALL COLLISION 
+    if ball.xcor() > 340 and (ball.ycor() < paddle2.ycor() + 40 and ball.ycor() > paddle2.ycor() -40):
+        ball.setx(340)
+        ball.dx *= -1
+        collision = True    
+    
+    if ball.xcor() < -340 and (ball.ycor() < paddle1.ycor() + 40 and ball.ycor() > paddle1.ycor() -40):
+        ball.setx(-340)
+        ball.dx *= -1
