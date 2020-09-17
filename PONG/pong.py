@@ -35,6 +35,26 @@ ball.color("white")
 ball.penup()
 ball.goto(-0,0)
 
+
+#MOVEMENT
+
+def paddle1_up():
+    y = paddle1.ycor()
+    y+=20
+    paddle1.sety(y)
+
+def paddle1_down():
+    y =paddle1.ycor()
+    y-=20
+    paddle1.sety(y)
+
+#KEYBOARD
+window.listen()
+window.onkeypress(paddle1_up, "Up")
+window.onkeypress(paddle1_down, "Down")
+
+
+
 #GAME LOOP
 while True:
     window.update()
