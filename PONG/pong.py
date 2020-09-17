@@ -17,7 +17,6 @@ paddle1.shapesize(stretch_wid=5, stretch_len=1)
 paddle1.penup()
 paddle1.goto(-350,0)
 
-
 #PADDLE 2
 paddle2 = turtle.Turtle()
 paddle2.speed(0)
@@ -34,10 +33,10 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(-0,0)
-
+ball.dx = 0.2
+ball.dy = 0.2
 
 #MOVEMENT
-
 def paddle1_up():
     y = paddle1.ycor()
     y+=20
@@ -65,12 +64,27 @@ window.onkeypress(paddle1_down, "s")
 window.onkeypress(paddle2_up, "Up")
 window.onkeypress(paddle2_down, "Down")
 
-
-
-
 #GAME LOOP
 while True:
     window.update()
 
+    #move ball
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
 
+    #collision
+    if(ball.ycor() > 290):
+        ball.sety(290)
+        ball.dy *= -0.2
 
+    if(ball.ycor() < -290):
+        ball.sety(-290)
+        ball.dy *= -0.2
+
+    if ball.xcor() > 390:
+        ball.goto(0,0)
+        ball.dx *= -0.2
+
+    if ball.xcor() < -390:
+        ball.goto(0,0)
+        ball.dx *= 0.2
