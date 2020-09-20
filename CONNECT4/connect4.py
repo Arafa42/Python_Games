@@ -35,8 +35,15 @@ def win_check(board,piece):
             if board[r][c] == piece and board[r+1][c] == piece and board[r+2][c] == piece and board[r+3][c] == piece:
                 return True
 
-            #if board[r][c] == piece and board[r+1][c+1] == piece and board[r+2][c+2] == piece and board[r+3][c+3] == piece:
-                #return True
+    for c in range(COL-3):
+        for r in range(ROW-3):
+            if board[r][c] == piece and board[r+1][c+1] == piece and board[r+2][c+2] == piece and board[r+3][c+3] == piece:
+                return True
+
+    for c in range(COL-3):
+        for r in range(3,ROW):
+            if board[r][c] == piece and board[r-11][c+1] == piece and board[r-2][c+2] == piece and board[r-3][c+3] == piece:
+                return True
 
 
 
